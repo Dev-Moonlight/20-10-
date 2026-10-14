@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8f1">
+  <meta name="description" content="Một lời chúc 20/10 nhỏ xinh gửi đến Linh.">
+  <title>Gửi Linh — 20 tháng 10</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fffaf4;
+      --ink: #493b3a;
+      --muted: #897573;
+      --rose: #d98188;
+      --rose-dark: #b85f70;
+      --rose-light: #f4c7c5;
+      --peach: #f3b5a3;
+      --sage: #a8b7a1;
+      --shadow: 0 24px 70px rgba(114, 75, 72, .14);
+    }
+
+    * { box-sizing: border-box; }
+    html { min-height: 100%; }
+    body {
+      min-height: 100svh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+      padding: 28px 18px;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 12% 15%, rgba(244, 199, 197, .32), transparent 30%),
+        radial-gradient(ellipse at 88% 84%, rgba(236, 207, 170, .28), transparent 28%),
+        var(--paper);
+      font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    }
+
+    .scene {
+      width: min(100%, 790px);
+      min-height: 650px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      isolation: isolate;
+      padding: 30px 0 16px;
+    }
+
+    .scene::before, .scene::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 190px;
+      height: 190px;
+      border: 1px solid rgba(185, 128, 121, .13);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .scene::before { top: 4%; left: 3%; }
+    .scene::after { right: 2%; bottom: 4%; width: 250px; height: 250px; }
+
+    .eyebrow {
+      margin: 0 0 9px;
+      color: var(--rose-dark);
+      font: 600 11px/1.4 system-ui, sans-serif;
+      letter-spacing: .23em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      text-align: center;
+      font-size: clamp(29px, 5vw, 43px);
+      line-height: 1.15;
+      font-weight: 500;
+      letter-spacing: -.035em;
+    }
+    h1 span { color: var(--rose-dark); font-style: italic; }
+    .intro {
+      margin: 13px 0 25px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .letter-stage {
+      width: min(100%, 590px);
+      min-height: 390px;
+      position: relative;
+      display: grid;
+      place-items: end center;
+      perspective: 1200px;
+    }
+
+    .envelope {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 430px);
+      height: 244px;
+      margin-bottom: 24px;
+      border-radius: 5px 5px 12px 12px;
+      background: linear-gradient(145deg, #f5c5b8, #eaa69f);
+      box-shadow: 0 22px 44px rgba(143, 89, 88, .17), inset 0 1px 0 rgba(255,255,255,.65);
+      transform-style: preserve-3d;
+      transition: transform .8s cubic-bezier(.2,.8,.2,1), box-shadow .8s ease;
+    }
+    .envelope::before, .envelope::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+    .envelope::before {
+      z-index: 3;
+      background: linear-gradient(33deg, transparent 49.6%, rgba(255,238,225,.82) 50%, transparent 50.5%),
+                  linear-gradient(-33deg, transparent 49.6%, rgba(255,238,225,.68) 50%, transparent 50.5%);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    .envelope::after {
+      z-index: 4;
+      background: linear-gradient(145deg, #f9d1c5 0%, #f0b5aa 100%);
+      clip-path: polygon(0 0, 50% 58%, 100% 0);
+      transform-origin: top center;
+      backface-visibility: hidden;
+      transition: transform .82s cubic-bezier(.2,.7,.2,1), z-index 0s .4s;
+    }
+
+    .letter {
+      position: absolute;
+      z-index: 2;
+      left: 7%;
+      bottom: 16px;
+      width: 86%;
+      height: 218px;
+      overflow: hidden;
+      padding: 24px 24px 18px;
+      border: 1px solid rgba(156, 115, 99, .12);
+      border-radius: 4px;
+      background: linear-gradient(145deg, #fffefa, #fff8ee);
+      box-shadow: 0 7px 20px rgba(90, 61, 54, .1);
+      transition: transform .95s cubic-bezier(.18,.82,.25,1) .25s, height .9s ease .2s, box-shadow .7s ease;
+    }
+    .letter-content { opacity: 0; transform: translateY(12px); transition: opacity .55s ease .85s, transform .65s ease .85s; }
+    .letter h2 { margin: 0 0 13px; color: var(--rose-dark); font-size: 25px; font-weight: 500; font-style: italic; }
+    .letter p { margin: 0 0 10px; font-size: 15px; line-height: 1.72; }
+    .letter .sign { margin-top: 17px; color: var(--rose-dark); font-style: italic; }
+
+    .seal {
+      position: absolute;
+      z-index: 5;
+      left: 50%; top: 54%;
+      width: 43px; height: 43px;
+      display: grid; place-items: center;
+      border: 1px solid rgba(255,255,255,.65);
+      border-radius: 50%;
+      color: #fffaf4;
+      background: linear-gradient(145deg, #c9787c, #b65c6c);
+      box-shadow: 0 4px 12px rgba(124, 61, 69, .23);
+      font-size: 18px;
+      transform: translate(-50%, -50%);
+      transition: opacity .25s ease, transform .35s ease;
+    }
+
+    .open .envelope { transform: translateY(104px); box-shadow: 0 28px 50px rgba(143, 89, 88, .12); }
+    .open .envelope::after { z-index: 1; transform: rotateX(180deg); }
+    .open .letter {
+      z-index: 5;
+      height: 340px;
+      transform: translateY(-166px);
+      overflow: auto;
+      box-shadow: 0 16px 38px rgba(90, 61, 54, .15);
+    }
+    .open .letter-content { opacity: 1; transform: translateY(0); }
+    .open .seal { opacity: 0; transform: translate(-50%, -50%) scale(.7); }
+
+    .actions { min-height: 58px; display: flex; justify-content: center; align-items: center; margin-top: 4px; }
+    .open-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 999px;
+      color: white;
+      background: var(--rose-dark);
+      box-shadow: 0 8px 20px rgba(184, 95, 112, .22);
+      font: 600 14px system-ui, sans-serif;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+    .open-button:hover { transform: translateY(-2px); background: #a94f62; box-shadow: 0 11px 23px rgba(184, 95, 112, .28); }
+    .open-button:focus-visible { outline: 3px solid #df9ca0; outline-offset: 4px; }
+    .open-button[hidden] { display: none; }
+    .hint { margin: 10px 0 0; color: #a28c85; font: 12px system-ui, sans-serif; letter-spacing: .025em; }
+
+    .petal {
+      position: absolute;
+      z-index: -1;
+      width: 9px; height: 15px;
+      border-radius: 100% 0 100% 0;
+      background: rgba(218, 143, 146, .45);
+      animation: drift 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .petal:nth-child(1) { left: 10%; top: 24%; animation-delay: -2s; }
+    .petal:nth-child(2) { right: 12%; top: 21%; width: 7px; height: 12px; animation-delay: -5s; }
+    .petal:nth-child(3) { left: 18%; bottom: 16%; width: 6px; height: 10px; animation-delay: -4s; }
+    .petal:nth-child(4) { right: 9%; bottom: 24%; animation-delay: -1s; }
+    @keyframes drift { 0%,100% { transform: translate3d(0,0,0) rotate(0); opacity: .45; } 50% { transform: translate3d(12px,-15px,0) rotate(35deg); opacity: .8; } }
+
+    .footer { margin-top: 15px; color: #a28c85; font: 11px system-ui, sans-serif; letter-spacing: .12em; text-align: center; }
+
+    @media (max-width: 560px) {
+      body { padding: 20px 14px; }
+      .scene { min-height: 610px; padding-top: 18px; }
+      .intro { max-width: 300px; margin: 11px 0 13px; font-size: 14px; }
+      .letter-stage { min-height: 365px; }
+      .envelope { height: 205px; margin-bottom: 22px; }
+      .letter { height: 185px; padding: 20px 17px 16px; }
+      .letter h2 { font-size: 22px; margin-bottom: 9px; }
+      .letter p { font-size: 14px; line-height: 1.62; }
+      .open .envelope { transform: translateY(86px); }
+      .open .letter { height: 320px; transform: translateY(-153px); }
+      .seal { top: 53%; width: 39px; height: 39px; }
+      .scene::before { width: 115px; height: 115px; left: -9%; top: 8%; }
+      .scene::after { width: 165px; height: 165px; right: -10%; bottom: 7%; }
+    }
+
+    @media (max-height: 720px) and (min-width: 561px) {
+      .scene { min-height: 570px; transform: scale(.92); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="scene" id="scene">
+    <span class="petal" aria-hidden="true"></span>
+    <span class="petal" aria-hidden="true"></span>
+    <span class="petal" aria-hidden="true"></span>
+    <span class="petal" aria-hidden="true"></span>
+
+    <p class="eyebrow">Một lời nhắn nhỏ · 20.10</p>
+    <h1>Gửi <span>Linh</span>,</h1>
+    <p class="intro">Có một điều dễ thương muốn gửi đến Linh<br>nhân ngày đặc biệt này.</p>
+
+    <section class="letter-stage" aria-label="Phong thư chúc mừng">
+      <div class="envelope" aria-hidden="true">
+        <article class="letter" id="letter" aria-live="polite">
+          <div class="letter-content">
+            <h2>Chúc mừng 20/10!</h2>
+            <p>Linh ơi, chúc Linh luôn rạng rỡ, bình an và có thật nhiều niềm vui trong mỗi ngày.</p>
+            <p>Mong những điều dịu dàng nhất sẽ tìm đến Linh — hôm nay và cả những ngày bình thường nữa. Cảm ơn Linh vì đã luôn là một người thật đáng quý.</p>
+            <p class="sign">Chúc 20/10</p>
+          </div>
+        </article>
+        <span class="seal" aria-hidden="true">♡</span>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button class="open-button" id="openButton" type="button" aria-expanded="false" aria-controls="letter">
+        <span aria-hidden="true">✉</span> Mở thư nhé
+      </button>
+    </div>
+    <p class="hint" id="hint">GỬI LỜI CHÚC ĐẾN BẠN</p>
+  </main>
+
+  <script>
+    const scene = document.getElementById('scene');
+    const openButton = document.getElementById('openButton');
+    const hint = document.getElementById('hint');
+
+    openButton.addEventListener('click', () => {
+      scene.classList.add('open');
+      openButton.setAttribute('aria-expanded', 'true');
+      openButton.hidden = true;
+      hint.textContent = 'Chúc Linh một ngày 20/10 thật dịu dàng ♡';
+      document.getElementById('letter').setAttribute('aria-label', 'Lời chúc 20 tháng 10 dành cho Linh');
+    });
+  </script>
+</body>
+</html>
